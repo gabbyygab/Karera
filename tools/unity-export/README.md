@@ -24,3 +24,13 @@ Maps 6 and 7 (Manila, National Road) were added 2026-10-05: `cap.cs` knows seven
 first aerial in for the National Road's long, thin lap. Their `src/data/karera.ts` entries were generated
 from `dump.cs` with the same plan rule as the others: start at the finish line, every `ceil(count/250)`th
 sample, scaled to 100 across the longer axis, north up, heights from the lowest point.
+
+Re-exported 2026-10-24 for the roster after the motorela was removed (2026-10-16): `glb.cs` and
+`studio.cs` now write `mio`, plus the prefab skins `mio-nightshift` (NIGHT SHIFT, asset id still
+`mio-schoolrun`) and `traysikel-pandesal` (ROLLING PANDESAL). `glb.cs` writes alpha-clipped materials
+(`_AlphaClip`) as glTF `MASK` so decals cut out. `dump.cs` knows `CvtDrive` and also writes the
+campaign's chapters; `cast.json` from `port.cs` is pasted in as `cast`. `cap.cs` fields now swap the
+motorela for the Mio and lead with each map's current chapter vehicle (San Isidro: padyak, Cagayan de
+Oro: Mio). Stills, all seven clips (`<map> frames 165 0.18`), the montage, its poster (San Isidro frame 0)
+and the collage were re-shot the same day. The editor must be out of Play mode; the CLI may report
+"Main thread operation timed out" while a frame run still completes, so check `Temp/web/frames/<map>`.

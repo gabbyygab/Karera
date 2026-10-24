@@ -7,7 +7,7 @@ sb.Append("{\"vehicles\":[");
 for (int i = 0; i < roster.Count; i++) {
   var d = roster[i];
   if (i > 0) sb.Append(",");
-  string drive = d.UsesManualGearbox ? "ManualGearbox" : d.UsesWhipDrive ? "WhipDrive" : d.UsesPedalDrive ? "PedalDrive" : d.UsesElectricDrive ? "ElectricDrive" : "Arcade";
+  string drive = d.UsesManualGearbox ? "ManualGearbox" : d.UsesWhipDrive ? "WhipDrive" : d.UsesPedalDrive ? "PedalDrive" : d.UsesElectricDrive ? "ElectricDrive" : d.UsesCvtDrive ? "CvtDrive" : "Arcade";
   sb.Append("{\"id\":" + Q(d.name) + ",\"name\":" + Q(d.FilipinoName) + ",\"english\":" + Q(d.EnglishName) + ",\"class\":" + Q(d.Class.ToString()) + ",\"era\":" + Q(d.Era.ToString()));
   sb.Append(",\"flavour\":" + Q(d.FlavourText) + ",\"mass\":" + F(d.Mass) + ",\"topSpeed\":" + F(d.TopSpeed) + ",\"accel\":" + F(d.Acceleration) + ",\"brake\":" + F(d.BrakeForce));
   sb.Append(",\"grip\":" + F(d.BaseGrip) + ",\"steerRate\":" + F(d.SteerRateDegPerSec) + ",\"wheelRadius\":" + F(d.WheelRadius) + ",\"drive\":" + Q(drive) + ",\"steering\":" + Q(d.SteeringControl.ToString()) + ",\"hud\":" + Q(d.HudStyle.ToString()) + ",\"ring\":" + Q(d.SecondaryRing.ToString()));
@@ -27,6 +27,12 @@ for (int m = 0; m < cat.Count; m++) {
   sb.Append("{\"scene\":" + Q(cat.SceneNameOf(m)) + ",\"name\":" + Q(t.DisplayName) + ",\"flavour\":" + Q(t.FlavourText) + ",\"lap\":" + F(t.LapLength) + ",\"width\":" + F(t.RoadWidth) + ",\"laps\":" + t.DefaultLaps + ",\"finish\":" + t.FinishLineIndex + ",\"pts\":[");
   for (int p = 0; p < t.Count; p++) { var c = t.Centre(p); if (p>0) sb.Append(","); sb.Append("[" + F(c.x) + "," + F(c.y) + "," + F(c.z) + "]"); }
   sb.Append("]}");
+}
+sb.Append("],\"chapters\":[");
+var camp = UnityEditor.AssetDatabase.LoadAssetAtPath<Karera.Race.StoryCampaign>("Assets/Data/Story/Campaign_Karera.asset");
+for (int c = 0; c < camp.ChapterCount; c++) {
+  var ch = camp[c]; if (c > 0) sb.Append(",");
+  sb.Append("{\"n\":" + ch.Number + ",\"title\":" + Q(ch.Title) + ",\"sub\":" + Q(ch.Subtitle) + ",\"vehicle\":" + Q(roster[ch.RosterIndex].name) + ",\"rival\":" + Q(ch.Rival ? ch.Rival.Id : "") + ",\"map\":" + Q(cat.TrackOf(ch.MapIndex).DisplayName) + "}");
 }
 sb.Append("]}");
 System.IO.File.WriteAllText("Temp/web/karera-data.json", sb.ToString());

@@ -1,0 +1,12 @@
+Karera - Traysikel tutorial (16:9, 1920x1080, 38.6 s, Map 4 Bustos)
+Voice: edge-tts fil-PH-AngeloNeural (Taglish)
+
+ 0.30s  Mga ka-Karera! Traysikel muna tayo, dito sa Bustos.
+ 4.60s  Manual 'to, pare. Pindot muna ang CLUTCH, tapos shift up!
+ 9.00s  Clutch, shift, gas. Ulit-ulit lang hanggang fifth gear.
+13.90s  Bantayan ang tachometer. Pag malapit na sa pula, shift na agad.
+19.20s  Bago kumanto, clutch ulit, tapos downshift, para may hatak paglabas.
+23.80s  Daanan ang turbo pad para magka-nitro.
+26.60s  Pag TURBO READY na, pindutin ang TURBO.
+29.05s  Ayan, lipad!
+33.60s  Karera. October twenty-six. Tara, karera na!

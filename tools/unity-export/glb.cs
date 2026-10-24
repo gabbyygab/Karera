@@ -12,7 +12,9 @@ var jobs = new System.Collections.Generic.List<string[]> {
   new[]{"Assets/Art/Vehicles/HabalHabal/HabalHabal.prefab","habalhabal"},
   new[]{"Assets/Art/Vehicles/HabalHabal/HabalHabal_ThreeUp.prefab","habalhabal-threeup"},
   new[]{"Assets/Art/Vehicles/Keso/Keso.prefab","keso"},
-  new[]{"Assets/Art/Vehicles/Motorela/Motorela.prefab","motorela"},
+  new[]{"Assets/Art/Vehicles/Mio/Mio.prefab","mio"},
+  new[]{"Assets/Art/Vehicles/Mio/Mio_SchoolRun.prefab","mio-nightshift"},
+  new[]{"Assets/Art/Vehicles/Tricycle/Tricycle_PandesalCart.prefab","traysikel-pandesal"},
 };
 var skipNames = new System.Collections.Generic.HashSet<string>{"VFX","Audio","ContactPoints","CenterOfMass"};
 var report = new System.Text.StringBuilder();
@@ -83,6 +85,9 @@ foreach (var job in jobs) {
     float metal = m.HasProperty("_Metallic") ? m.GetFloat("_Metallic") : 0f;
     float smooth = m.HasProperty("_Smoothness") ? m.GetFloat("_Smoothness") : 0.5f;
     bool transparent = m.renderQueue >= 2900 || (m.HasProperty("_Surface") && m.GetFloat("_Surface") > 0.5f);
+    // alpha-clipped decals (wordmarks, route boards, signs) cut out rather than blend
+    bool clipped = !transparent && m.HasProperty("_AlphaClip") && m.GetFloat("_AlphaClip") > 0.5f;
+    float cutoff = m.HasProperty("_Cutoff") ? m.GetFloat("_Cutoff") : 0.5f;
     var tex = m.HasProperty("_BaseMap") ? m.GetTexture("_BaseMap") : null;
     string texJ = "";
     if (tex != null) { int img = addImage(tex); texJ = ",\"baseColorTexture\":{\"index\":" + img + "}"; }
@@ -94,7 +99,7 @@ foreach (var job in jobs) {
     if (matCount > 0) matsJ.Append(",");
     matsJ.Append("{\"name\":\"" + m.name + "\",\"pbrMetallicRoughness\":{\"baseColorFactor\":[" + lin.r.ToString("0.#####",ci) + "," + lin.g.ToString("0.#####",ci) + "," + lin.b.ToString("0.#####",ci) + "," + c.a.ToString("0.###",ci) + "]" + texJ +
       ",\"metallicFactor\":" + metal.ToString("0.###",ci) + ",\"roughnessFactor\":" + (1f - smooth).ToString("0.###",ci) + "}" + emis +
-      (transparent ? ",\"alphaMode\":\"BLEND\"" : "") + ",\"doubleSided\":" + (transparent ? "true" : "false") +
+      (transparent ? ",\"alphaMode\":\"BLEND\"" : clipped ? ",\"alphaMode\":\"MASK\",\"alphaCutoff\":" + cutoff.ToString("0.###",ci) : "") + ",\"doubleSided\":" + (transparent ? "true" : "false") +
       ",\"extras\":{\"shader\":\"" + m.shader.name + "\"}}");
     matIndex[m] = matCount; return matCount++;
   };

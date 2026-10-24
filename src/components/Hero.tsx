@@ -120,7 +120,7 @@ export function Hero() {
             transition={{ delay: 0.45 }}
             className="text-sm md:text-base text-gray-300 mt-3 max-w-2xl px-4"
           >
-            Race a kalesa through Vigan's cobbles, a motorela round Plaza Divisoria, a jeepney down Rizal Avenue, a habal-habal over a Bukidnon pass — every one with its own gearbox, whip, pedals or battery.
+            Race a kalesa through Vigan's cobbles, a Mio round Plaza Divisoria, a jeepney down Rizal Avenue, a habal-habal over a Bukidnon pass — every one with its own gearbox, belt, whip, pedals or battery.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

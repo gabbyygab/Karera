@@ -4,7 +4,7 @@ import { vehicles } from '../data/karera';
 import { SectionTitle } from './ui';
 
 // Bounding-box length of each prefab in metres, measured in Unity at export.
-const lengthM: Record<string, number> = { traysikel: 1.91, kalesa: 4.77, padyak: 1.76, jeepney: 5.74, habalhabal: 2.82, keso: 1.93, motorela: 3.44 };
+const lengthM: Record<string, number> = { traysikel: 1.93, kalesa: 4.83, padyak: 1.76, jeepney: 5.88, habalhabal: 2.28, keso: 1.97, mio: 1.94 };
 // The side cut-outs are 6.4 m x 3.2 m, centred on the vehicle's bounds.
 const IMG_M = 6.4;
 
@@ -22,7 +22,7 @@ export function GridLineup() {
           The Grid
         </SectionTitle>
         <p className="text-gray-400 max-w-2xl -mt-4 mb-8 text-sm md:text-base">
-          Every machine drawn from the game's own model at the same scale, lined up by top speed. The jeepney is fastest in a straight line; the KESO is quickest away and only fifth flat out; the padyak is a man's legs and turns inside everything.
+          Every machine drawn from the game's own model at the same scale, lined up by top speed. The jeepney is fastest in a straight line; the Mio's belt runs it level with the habal-habal at the top; the KESO is quickest away and gives up the top end; the padyak is a man's legs and turns inside everything.
         </p>
       </div>
       {/* --line is the start line: 72% across on a wide screen, and on a phone far enough right to

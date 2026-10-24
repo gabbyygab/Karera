@@ -20,6 +20,7 @@ export const driveLabel: Record<string, string> = {
   WhipDrive: 'Whip drive',
   PedalDrive: 'Pedal drive',
   ElectricDrive: 'Hub motor',
+  CvtDrive: 'CVT automatic',
 };
 const ringLabel: Record<string, string> = {
   Tachometer: 'Tachometer',
@@ -48,8 +49,9 @@ function drivetrainLine(v: Vehicle) {
   if (v.drive === 'ManualGearbox')
     return `${v.reverse ? 'R-N-' : 'N-'}${Array.from({ length: v.gears ?? 0 }, (_, i) => i + 1).join('-')} · clutch · ${v.redline} rpm redline`;
   if (v.drive === 'WhipDrive') return 'Five latching whip levels · the horse tires';
-  if (v.drive === 'PedalDrive') return 'One fixed gear · cadence band · stamina';
+  if (v.drive === 'PedalDrive') return 'One fixed gear · cadence band · STAND to sprint';
   if (v.drive === 'ElectricDrive') return 'No gears, no clutch · regen on lift-off · 900 m pack';
+  if (v.drive === 'CvtDrive') return 'Twist and go · the belt holds 7200 rpm · soft launch, strong top';
   return v.drive;
 }
 

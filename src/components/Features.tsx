@@ -3,13 +3,13 @@ import { Cog, Flame, Gamepad2, History, Users, Smartphone, Zap, Palette } from '
 import { SectionTitle } from './ui';
 
 const features = [
-  { icon: Cog, title: 'Four drivetrains', desc: 'Manual gearboxes with a real clutch, a horse that answers to five whip levels, a pedicab with one gear and a cadence band, and a hub motor with regen.' },
+  { icon: Cog, title: 'Five drivetrains', desc: 'Manual gearboxes with a real clutch, a horse that answers to five whip levels, a pedicab with one gear and a stand-up sprint, a scooter belt that shifts itself, and a hub motor with regen.' },
   { icon: Flame, title: 'Drift mini-turbo', desc: 'Hold a slide to charge three tiers of boost. Cobbles break traction in small steps — Vigan charges drifts 18% faster.' },
-  { icon: Zap, title: 'Held turbos', desc: 'Drive through a booster pad to bank a turbo, then fire it where you choose. A 4-second cooldown stops pads from stacking.' },
+  { icon: Zap, title: 'Turbo gauge', desc: 'Every booster pad fills one of three cells. Fire when you choose and the whole gauge burns at once, and a full gauge burns harder.' },
   { icon: History, title: 'Auto-rewind', desc: 'Overturned or off the tarmac for four seconds? The game rewinds you three seconds, back on the road and square to it.' },
-  { icon: Users, title: '2–8 player online', desc: 'Host on one device, join by address over Wi-Fi or the internet. Vote the vehicle, vote the road, everyone drives the winner.' },
-  { icon: Smartphone, title: 'Per-vehicle touch controls', desc: 'Reins and a whip for the kalesa, a three-spoke wheel for the jeepney, cranks for the padyak — and nothing over the road.' },
-  { icon: Palette, title: 'Skins', desc: 'Fiesta pink, Midnight Chrome, a Royal Calesa and a three-up habal-habal modelled from real photos. A look, never a tune.' },
+  { icon: Users, title: '2–8 player online', desc: 'Host on one device, join by address over Wi-Fi or the internet. Vote the vehicle, vote the road, everyone drives the winner — and throw kamote at each other.' },
+  { icon: Smartphone, title: 'Per-vehicle touch controls', desc: 'Reins and a whip for the kalesa, a three-spoke wheel for the jeepney, a twist grip for the scooters — or pair your phone as a tilt-to-steer wheel.' },
+  { icon: Palette, title: 'Skins', desc: 'A pandesal bakery cart that sheds bread rolls, a three-up habal-habal, a Mio carrying three, four horses for the kalesa. A look, never a tune.' },
   { icon: Gamepad2, title: 'Honest AI', desc: 'Rivals drive through the same throttle, brake and clutch you do. Difficulty changes what they ask for, never the physics.' },
 ];
 
@@ -47,11 +47,13 @@ const keys: { keys: string[]; verb: string; note?: string }[] = [
   { keys: ['A', 'D'], verb: 'Steer' },
   { keys: ['Space'], verb: 'Drift' },
   { keys: ['F'], verb: 'Fire turbo' },
-  { keys: ['Shift'], verb: 'Clutch' },
+  { keys: ['G'], verb: 'Throw kamote', note: 'Quick Race and online' },
+  { keys: ['Shift'], verb: 'Clutch', note: 'or STAND on the padyak' },
   { keys: ['E', 'Q'], verb: 'Shift up / down' },
-  { keys: ['C'], verb: 'Camera' },
+  { keys: ['C'], verb: 'Camera', note: 'chase · driver · vehicle' },
   { keys: ['Ctrl'], verb: 'Look back' },
   { keys: ['H'], verb: 'Horn' },
+  { keys: ['R'], verb: 'Reset', note: 'hold' },
 ];
 
 export function Controls() {
@@ -66,9 +68,10 @@ export function Controls() {
           <h2 className="font-display text-4xl md:text-6xl italic uppercase leading-none mb-6">Clutch In, Then Shift</h2>
           <div className="space-y-5">
             {[
-              ['01', 'The manuals', 'Traysikel, jeepney, habal-habal and motorela: hold the clutch, then shift. The jeepney is the only one with reverse — shift down out of neutral.'],
+              ['01', 'The manuals', 'Traysikel, jeepney and habal-habal: hold the clutch, then shift. The jeepney is the only one with reverse — shift down out of neutral.'],
               ['02', 'The kalesa', 'There is no throttle. Each whip latches the horse up a gait; whip it too often and it tires.'],
-              ['03', 'The padyak and the KESO', 'One gear: keep the cadence in its band. The KESO has no gears at all — lift off and regen slows you, but watch the pack.'],
+              ['03', 'The padyak', "One gear: keep the cadence in its band, and STAND for a three-second sprint past the gear's ceiling. Then wait for the meter to reload."],
+              ['04', 'The Mio and the KESO', "Automatics: just the throttle. The Mio's belt holds the engine on one note as you climb; the KESO launches hardest, and lifting off regens the pack."],
             ].map(([n, h, p]) => (
               <div key={n} className="flex gap-4 items-start">
                 <div className="bg-black text-white px-3 py-2 font-display text-xl">{n}</div>

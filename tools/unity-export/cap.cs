@@ -6,13 +6,13 @@ string outRoot = "E:/Desktop/Karera Website/public/maps";
 string[] slugs = { "san-isidro", "vigan", "cagayan-de-oro", "bustos", "bukidnon", "manila", "national-road" };
 // the map's own chapter vehicle leads every shot
 string[][] fields = {
-  new[]{"Jeepney","Keso","Tricycle","Padyak","HabalHabal"},
-  new[]{"Kalesa","Tricycle","Padyak","Motorela","Keso"},
-  new[]{"Motorela","Jeepney","Tricycle","HabalHabal","Keso"},
-  new[]{"Tricycle","Padyak","Jeepney","Motorela","Keso"},
-  new[]{"HabalHabal","Jeepney","Keso","Tricycle","Motorela"},
-  new[]{"Jeepney","Tricycle","Motorela","Keso","HabalHabal"},
-  new[]{"Keso","Jeepney","Padyak","Tricycle","HabalHabal"},
+  new[]{"Padyak","Jeepney","Tricycle","Keso","HabalHabal"},
+  new[]{"Kalesa","Tricycle","Padyak","Mio","Keso"},
+  new[]{"Mio","Jeepney","Tricycle","HabalHabal","Keso"},
+  new[]{"Tricycle","Padyak","Jeepney","Mio","Keso"},
+  new[]{"HabalHabal","Jeepney","Keso","Tricycle","Mio"},
+  new[]{"Jeepney","Tricycle","Mio","Keso","HabalHabal"},
+  new[]{"Keso","Jeepney","Mio","Tricycle","HabalHabal"},
 };
 var cat = UnityEditor.AssetDatabase.LoadAssetAtPath<Karera.Data.MapCatalog>("Assets/Data/Maps_Karera.asset");
 var track = cat.TrackOf(mapIdx);

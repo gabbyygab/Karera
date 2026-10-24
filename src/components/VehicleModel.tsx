@@ -82,6 +82,8 @@ export function VehicleModel({ url, skin, spin, outline, onBounds }: Props) {
           gradientMap: gradient,
           emissive: src.emissive?.clone() ?? new THREE.Color(0),
           emissiveIntensity: src.emissiveIntensity ?? 1,
+          // alpha-clipped decals (wordmarks, route boards) cut out as in the game
+          alphaTest: src.alphaTest,
         });
         t.userData.base = src.color.clone();
         toon.push(t);

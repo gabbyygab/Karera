@@ -3,7 +3,8 @@ string outDir = "E:/Desktop/Karera Website/public/vehicles"; System.IO.Directory
 var jobs = new string[][] {
   new[]{"Tricycle/Tricycle","traysikel"}, new[]{"Kalesa/Kalesa","kalesa"}, new[]{"Padyak/Padyak","padyak"},
   new[]{"Jeepney/Jeepney","jeepney"}, new[]{"HabalHabal/HabalHabal","habalhabal"}, new[]{"HabalHabal/HabalHabal_ThreeUp","habalhabal-threeup"},
-  new[]{"Keso/Keso","keso"}, new[]{"Motorela/Motorela","motorela"} };
+  new[]{"Keso/Keso","keso"}, new[]{"Mio/Mio","mio"}, new[]{"Mio/Mio_SchoolRun","mio-nightshift"},
+  new[]{"Tricycle/Tricycle_PandesalCart","traysikel-pandesal"} };
 bool fog = UnityEngine.RenderSettings.fog; UnityEngine.RenderSettings.fog = false;
 var others = new System.Collections.Generic.List<UnityEngine.Camera>();
 foreach (var o in UnityEngine.Object.FindObjectsByType<UnityEngine.Camera>(UnityEngine.FindObjectsSortMode.None)) if (o.enabled) { o.enabled = false; others.Add(o); }

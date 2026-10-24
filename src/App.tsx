@@ -144,7 +144,7 @@ const Overview = () => (
             <strong className="text-hot-pink">Built from research:</strong> every machine, street and sky is modelled from real places — Vigan's <em>bahay na bato</em>, Plaza Divisoria in Cagayan de Oro, the university gate in Bustos, the switchbacks of Bukidnon.
           </p>
           <p>
-            <strong className="text-electric-blue">Why it plays differently:</strong> four drivetrains that feel nothing alike. Lean on a sidecar, whip a tiring horse, keep a pedicab in its cadence band, short-shift a diesel jeepney, ride a battery down to empty.
+            <strong className="text-electric-blue">Why it plays differently:</strong> five drivetrains that feel nothing alike. Clutch a sidecar tricycle through five gears, whip a tiring horse, stand on a pedicab's pedals to sprint, twist a scooter's throttle and let the belt do the rest, ride a battery down to empty.
           </p>
         </div>
         <div className="grid grid-cols-3 gap-3 mt-8">
@@ -165,7 +165,7 @@ const Overview = () => (
           { id: 'jeepney', cls: 'left-0 top-0 w-[70%] z-10', r: -4, d: 0 },
           { id: 'kalesa', cls: 'right-0 top-[18%] w-[55%] z-20', r: 3, d: 0.1 },
           { id: 'habalhabal-threeup', cls: 'left-[8%] bottom-0 w-[48%] z-30', r: -2, d: 0.2 },
-          { id: 'traysikel', cls: 'right-[4%] bottom-[2%] w-[42%] z-40', r: 4, d: 0.3 },
+          { id: 'mio-nightshift', cls: 'right-[4%] bottom-[2%] w-[42%] z-40', r: 4, d: 0.3 },
         ].map((x) => (
           <motion.img
             key={x.id}
@@ -203,7 +203,7 @@ export default function App() {
       <Story />
       <Features />
       <Controls />
-      <DriveBy vehicle="keso" caption="Quickest away" reverse tone="#ccff00" />
+      <DriveBy vehicle="mio" caption="Twist and go" reverse tone="#ccff00" />
       <Gallery />
       <Team />
 
