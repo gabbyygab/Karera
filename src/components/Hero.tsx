@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Banderitas, RouteSign } from './ui';
-import { Countdown } from './Countdown';
+import { ReleaseStrip } from './ReleaseBoard';
+import { useRelease } from '../data/release';
 import { maps } from '../data/karera';
 
 /** Five reds light one by one, then all go out together: that is the start. */
@@ -64,6 +65,7 @@ function StartLights({ onGo }: { onGo: () => void }) {
 
 export function Hero() {
   const [started, setStarted] = useState(false);
+  const release = useRelease();
   const go = useCallback(() => setStarted(true), []);
   const { scrollY } = useScroll();
   const titleY = useTransform(scrollY, [0, 600], [0, 180]);
@@ -130,7 +132,7 @@ export function Hero() {
           >
             <RouteSign href="#garage" label="Garage" via="Via 7 vehicles" tone="sun" />
             <RouteSign href="#streets" label="Races" via={`Via ${maps.length} circuits`} tone="night" />
-            <RouteSign href="#download" label="Download" via="Coming Oct 26" tone="night" />
+            <RouteSign href="#download" label="Download" via={`Beta v${release.version}`} tone="night" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -138,7 +140,7 @@ export function Hero() {
             transition={{ delay: 0.7 }}
             className="mt-5"
           >
-            <Countdown compact />
+            <ReleaseStrip release={release} />
           </motion.div>
         </motion.div>
 

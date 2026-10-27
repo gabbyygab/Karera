@@ -3,8 +3,8 @@
 export type Member = { name: string; role: string; email: string; info?: string; photo?: string };
 
 export const team: Member[] = [
-  { name: 'Robb Julian Olazo', role: 'Assistant Game Developer & Game Designer', email: 'robbjullian730@gmail.com', photo: '/team/olazo.webp' },
-  { name: 'John Hensly Santos', role: 'Assistant Game Developer & Trailer Editor', email: 'hensley.santos9@gmail.com', photo: '/team/hensly.webp' },
+  { name: 'Robb Jullian Olazo', role: 'Assistant Game Developer & Game Designer', email: 'robbjullian730@gmail.com', photo: '/team/olazo.webp' },
+  { name: 'John Hensley Santos', role: 'Assistant Game Developer & Trailer Editor', email: 'hensley.santos9@gmail.com', photo: '/team/hensly.webp' },
   { name: 'John Gabriel Delicana', role: 'Project Leader', email: 'delicanagabriel1212@gmail.com', photo: '/team/gabriel.webp' },
   { name: 'Juan Paolo Peralta', role: 'Assistant Game Developer', email: 'paoloperalta246@gmail.com', photo: '/team/paolo.webp' },
   { name: 'Stephanie Gwen Padel', role: 'Asset Designer / Web Developer & Researcher', email: 'stephaniepdl2@gmail.com', photo: '/team/stephanie.webp' },
