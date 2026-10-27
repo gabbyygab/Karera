@@ -102,6 +102,15 @@ export function AndroidIcon({ className = '', eye = '#000' }: { className?: stri
   );
 }
 
+/** Four panes, for "available on Windows" marks. */
+export function WindowsIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="currentColor">
+      <path d="M3 5.5l7.5-1v7H3zM11.5 4.4L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z" />
+    </svg>
+  );
+}
+
 /** A small "Available on Android" chip. */
 export function AndroidBadge({ className = '' }: { className?: string }) {
   return (

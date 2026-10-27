@@ -82,7 +82,7 @@ export function Controls() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-sm font-semibold text-black/70">On Android you drive with on-screen touch controls — every vehicle draws its own. The keys above work with a keyboard or gamepad plugged in.</p>
+          <p className="mt-6 text-sm font-semibold text-black/70">On Android you drive with on-screen touch controls — every vehicle draws its own. On Windows, or with a keyboard or gamepad plugged in, use the keys above.</p>
         </div>
         <div className="grid grid-cols-2 gap-2 md:gap-3">
           {keys.map((k, i) => (

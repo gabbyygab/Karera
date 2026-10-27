@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Mail, X } from 'lucide-react';
+import { Mail, X } from 'lucide-react';
 import { Hero } from './components/Hero';
 import { Montage } from './components/Montage';
 import { DriveBy } from './components/DriveBy';
@@ -12,9 +12,9 @@ import { Features, Controls } from './components/Features';
 import { Gallery } from './components/Gallery';
 import { Team } from './components/Team';
 import { RaceHud } from './components/RaceHud';
-import { ReleaseBoard } from './components/ReleaseBoard';
-import { formatSize, RELEASES_URL, useRelease } from './data/release';
-import { AndroidIcon, CheckerStrip, Marquee, RouteSign, SectionTitle } from './components/ui';
+import { PlatformDownloads, ReleaseBoard } from './components/ReleaseBoard';
+import { headlineVersion, RELEASES_URL, useReleases } from './data/release';
+import { CheckerStrip, Marquee, SectionTitle } from './components/ui';
 import { maps, vehicles } from './data/karera';
 import { school, socials, team } from './data/team';
 
@@ -185,7 +185,8 @@ const Overview = () => (
 );
 
 export default function App() {
-  const release = useRelease();
+  const releases = useReleases();
+  const version = headlineVersion(releases);
   return (
     <div className="min-h-screen bg-asphalt text-white overflow-x-hidden selection:bg-hot-pink selection:text-white">
       <FloatingNav />
@@ -220,29 +221,14 @@ export default function App() {
           </h2>
           <p className="text-lg md:text-3xl font-hud font-bold uppercase text-gray-300 mb-8 md:mb-10">Your ride. Your road. Your race.</p>
           <div className="font-hud text-xs md:text-sm tracking-[0.4em] uppercase text-gray-400 mb-3">
-            {release.prerelease ? 'Public beta' : 'Latest build'} · out now
+            Public beta{version && ` v${version}`} · Android &amp; Windows
           </div>
           <div className="mb-8 md:mb-12">
-            <ReleaseBoard release={release} />
+            <ReleaseBoard releases={releases} />
           </div>
-          <RouteSign
-            size="lg"
-            tone="sun"
-            href={release.apkUrl}
-            label="Download"
-            via={`${release.apkName} · ${formatSize(release.bytes)}`}
-            icon={<Download className="w-7 h-7 md:w-8 md:h-8" strokeWidth={2.5} />}
-            aria-label={`Download ${release.apkName}, ${formatSize(release.bytes)}`}
-          />
-          <div className="mt-5 flex items-center gap-2 font-hud text-xs md:text-sm uppercase tracking-[0.2em] text-[#3ddc84]">
-            <AndroidIcon className="w-5 h-5" />
-            Android only · phones and tablets
-          </div>
-          <p className="mt-4 max-w-md text-xs md:text-sm text-gray-400">
-            Not on the Play Store yet: open the APK after it downloads and allow installs from this source when Android asks.
-          </p>
-          <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer" className="mt-3 font-hud text-xs uppercase tracking-[0.25em] text-electric-blue hover:text-neon-yellow transition-colors">
-            Release notes &amp; past builds{release.totalDownloads !== null && release.releaseCount > 1 && ` · ${release.totalDownloads.toLocaleString('en-PH')} downloads all-time`}
+          <PlatformDownloads releases={releases} />
+          <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer" className="mt-6 font-hud text-xs uppercase tracking-[0.25em] text-electric-blue hover:text-neon-yellow transition-colors">
+            Release notes &amp; past builds
           </a>
         </motion.div>
       </section>
